@@ -1,7 +1,15 @@
 {
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "lint": "eslint **.js",
+    "postinstall": "npm test",
+    "prestart": "npm run lint"
+  },
   "dependencies": {
     "chalk": "^5.0.1",
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "command-line-args": "^5.2.1"
   },
   "devDependencies": {
     "eslint": "^8.21.0",

@@ -1,10 +1,14 @@
 const colors = require('colors/safe');
+const commandLineArgs = require('command-line-args');
+const params = [{name: 'name', alias: 'n', type: String}];
+const options = commandLineArgs(params);
 
-const args = process.argv.slice(2);
-
-const [name = 'Friend'] = args;
-
+// const args = process.argv.slice(2);
+// console.log(process.argv);
+// const [name = 'Friends'] = args;
+const name = options.name || 'Friends';
 const hour = new Date().getHours();
+
 
 if (hour >= 6 && hour < 12) {
   console.log(colors.yellow(`Good morning ${name}`));
