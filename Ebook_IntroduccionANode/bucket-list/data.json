@@ -1,0 +1,22 @@
+[
+  {
+    "item": "Buy Milk",
+    "completed": true,
+    "date": "12/24/2022"
+  },
+  {
+    "item": "Buy water",
+    "completed": true,
+    "date": "12/24/2022"
+  },
+  {
+    "item": "Buy ice",
+    "completed": false,
+    "date": "12/24/2022"
+  },
+  {
+    "item": "Buy ice",
+    "completed": false,
+    "date": "12/24/2022"
+  }
+]
