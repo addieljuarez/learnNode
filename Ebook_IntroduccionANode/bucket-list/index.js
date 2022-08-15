@@ -1,18 +1,13 @@
-const fs = require('fs');
+
 const path = require('path');
 const commandLineArgs = require('command-line-args');
+const datastore = require('./datasotore');
+const utils = require('./utils');
 
 const filename = 'data.json';
-const filepath = `${path.resolve('.')}/${filename}`
+const filepath = `${path.resolve('.')}/${filename}`;
+const items = datastore.load(filepath);
 
-let content;
-
-try {
-    content = fs.readFileSync(filepath, 'utf-8');
-} catch(err) {
-    content = '[]';
-}
-const items = JSON.parse(content);
 const params = [
     {
         name: 'item',
@@ -36,16 +31,8 @@ const { item = '', completed = false, date = ''} = options;
 
 if(item){
     items.push({item, completed, date});
-    fs.writeFileSync(filepath, JSON.stringify(items, null, 2));
+    datastore.save(filepath, items);
 }
 
-console.debug(items);
 
-for(let index = 0; index < items.length; index++){
-    const element = items[index];
-    const checked = element.completed ? '[✓]' : '[ ]';
-    const duedate = element.date ? new Date(element.date) : '';
-    const name = element.item;
-
-    console.log(`${index}. ${checked} ${name} [${duedate}]`);
-}
+utils.printlist(items);
