@@ -18,5 +18,30 @@
     "item": "Buy ice",
     "completed": false,
     "date": "12/24/2022"
+  },
+  {
+    "item": "test1",
+    "completed": true,
+    "date": "11/11/2222"
+  },
+  {
+    "item": "est3",
+    "completed": false,
+    "date": "11/11/1111"
+  },
+  {
+    "item": "test",
+    "completed": false,
+    "date": "11/11/1111"
+  },
+  {
+    "item": "tes",
+    "completed": false,
+    "date": "11/11/111"
+  },
+  {
+    "item": "test",
+    "completed": true,
+    "date": "11/11/1111"
   }
 ]

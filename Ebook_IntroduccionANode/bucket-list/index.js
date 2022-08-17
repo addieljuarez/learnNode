@@ -1,6 +1,6 @@
 
 const path = require('path');
-const commandLineArgs = require('command-line-args');
+const inquirer = require('inquirer');
 const datastore = require('./datasotore');
 const utils = require('./utils');
 
@@ -8,31 +8,56 @@ const filename = 'data.json';
 const filepath = `${path.resolve('.')}/${filename}`;
 const items = datastore.load(filepath);
 
-const params = [
+// const params = [
+//     {
+//         name: 'item',
+//         alias: 'i',
+//         type: String,
+//     },
+//     {
+//         name: 'completed',
+//         alias: 'c',
+//         type: Boolean,
+//     },
+//     {
+//         name: 'date',
+//         alias: 'd',
+//         type: String,
+//     }
+// ];
+
+const options = [
     {
+        type: 'input',
         name: 'item',
-        alias: 'i',
-        type: String,
+        message: 'What do you want add?'
     },
     {
+        type: 'confirm',
         name: 'completed',
-        alias: 'c',
-        type: Boolean,
+        message: 'Is Completed?'
     },
     {
+        type: 'input',
         name: 'date',
-        alias: 'd',
-        type: String,
-    }
+        message: 'Due Date MM/DD/YYYY'
+    },
+    
 ];
 
-const options = commandLineArgs(params);
-const { item = '', completed = false, date = ''} = options;
+debugger
 
-if(item){
-    items.push({item, completed, date});
-    datastore.save(filepath, items);
-}
+inquirer.prompt(options)
+    .then(answer => {
+        const { item = '', completed = false, date = ''} = answer;
+        if(item){
+            items.push({
+                    item, 
+                    completed, 
+                    date
+                });
+            datastore.save(filepath, items);
+        }
+        utils.printlist(items);
+    })
 
-
-utils.printlist(items);
