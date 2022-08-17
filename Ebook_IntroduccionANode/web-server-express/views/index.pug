@@ -1,0 +1,11 @@
+html 
+    head
+        title= pageTitle
+        link(rel="stylesheet", href="styles.css")
+    body
+        h1 Index
+        ul.menu
+            each item in menu 
+                li 
+                    a(href=item.link)= item.name
+        p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni earum quas fuga molestiae culpa excepturi quidem minus quos velit ipsam repellat saepe optio explicabo eligendi, adipisci praesentium odit fugit soluta?
