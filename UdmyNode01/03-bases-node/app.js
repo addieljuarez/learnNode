@@ -2,24 +2,21 @@
 
 
 console.clear();
-const args = require('yargs')
-    .option('b', {
-        alias: 'base',
-        type: 'number',
-        demandOption: true,
-    })
-    .check((args, option) => {
-        // console.log('yargs', args);
-        if(isNaN(args.b)){
-            throw 'La base debe ser un numero';
-        }
-    })
-    .argv
 
 
 
-const { option } = require('yargs');
+// option
+// listar
+// boolean
+// default:false,
+
+
+
 const { crearArchivoTabla } = require('./helpers/multiplicar');
+const args = require('./config/yargs');
+const b = args.b;
+const l = args.l;
+const h = args.h;
 
 
 // console.log(process.argv);
@@ -31,8 +28,8 @@ const { crearArchivoTabla } = require('./helpers/multiplicar');
 
 
 // console.log(process.argv);
-console.log(args);
-console.log(args.base);
-// crearArchivoTabla(base)
-//     .then(nombreArchivo => console.log(`${nombreArchivo} creado`))
-//     .catch(err => console.log(err));
+// console.log(args);
+// console.log(args.base);
+crearArchivoTabla(b, l, h)
+    .then(nombreArchivo => console.log(`${nombreArchivo} creado`))
+    .catch(err => console.log(err));
